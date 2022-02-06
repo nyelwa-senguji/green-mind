@@ -1,0 +1,204 @@
+.item-a {
+    grid-area: header;
+    background: #39ac39;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-b {
+    grid-area: sidebar;
+}
+
+.item-c {
+    grid-area: main;
+}
+
+.item-d {
+    grid-area: footer;
+}
+
+.container {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 200px auto auto 200px;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header header header"
+        "sidebar main main footer";
+}
+
+.text-color {
+    color: #fff;
+}
+
+.logout-btn {
+    padding: 10px;
+    color: #fff;
+    background-color: #39ac39;
+    border: #fff 1px solid;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.space-btn-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.csv-btn {
+    background: #009933;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.pdf-btn {
+    background: #ff3333;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.add-btn {
+    background: #39ac39;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.inp-padding {
+    padding: 6px;
+    border: none;
+    border: solid 1px #8f8f9d;
+    border-radius: 4px;
+}
+
+.inp-padding:focus::placeholder {
+    color: transparent;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select {
+    padding: 6px;
+    background: #fff;
+    border: none;
+    border: solid 1px #8f8f9d;
+    border-radius: 4px;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 20px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border-radius: 5px;
+    border-top: #39ac39 solid 5px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    color: #8f8f9d;
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-body {
+    background: #fff;
+    color: #696969;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-hr {
+    margin: 10px;
+    width: 50%;
+    border: #8f8f9d solid 2px;
+    border-radius: 3px;
+}
+
+.modal-btn{
+    margin-left: auto; 
+    order: 2; 
+    margin-top: 10px;
+}
+
+.row{
+    display: flex;
+    gap: 20px;
+}
+
+.content{
+    width: 50%;
+}
+
+table{
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+table tr{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px;
+}
+
+table th{
+    padding: 10px;
+    text-align: left;
+}
+
+table td{
+    padding: 10px;
+    text-align: left;
+    color: #696969;
+}
+

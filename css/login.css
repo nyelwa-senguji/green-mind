@@ -1,0 +1,42 @@
+body{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container{
+    margin-top: 10px;
+    width: 20%;
+    display: flex;
+    flex-flow: column wrap ;
+    justify-content: center;
+    align-content: center;
+}
+
+.inp{
+    padding: 10px;
+    outline-width: 2px;
+    outline-color: #39ac39;
+    margin-top: 10px;
+}
+
+.login-btn{
+    padding: 10px;
+    color: #fff;
+    margin-top: 10px;
+    background-color: #39ac39;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inp:focus::placeholder{
+    color: transparent;
+}
+
+.text-header{
+    color: #39ac39;
+}
+
