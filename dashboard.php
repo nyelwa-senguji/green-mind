@@ -101,18 +101,6 @@ include("logout.php");
                 <td><i class="fas fa-plus" style="margin-right: 6px; font-size: small;"></i> | <i class="fas fa-eye" style="margin-left: 6px; font-size: small;"></i></td>
                 <td><i class="fas fa-edit" style="margin-right: 6px; font-size: small;"></i> | <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;"></i></td>
             </tr>
-
-            <tr>
-                <td>2</td>
-                <td>Abdallah Alli</td>
-                <td>Alli maulid</td>
-                <td>12/09/2020</td>
-                <td>male</td>
-                <td>3</td>
-                <td>0789674523</td>
-                <td><i class="fas fa-plus" style="margin-right: 6px; font-size: small;"></i> | <i class="fas fa-eye" style="margin-left: 6px; font-size: small;"></i></td>
-                <td><i class="fas fa-edit" style="margin-right: 6px; font-size: small;"></i> | <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;"></i></td>
-            </tr>
         </table>
 
     </div>
