@@ -1,8 +1,14 @@
 <?php
 
+include("./includes/connection.php");
+
 include("./includes/check_session.php");
 
 include("logout.php");
+
+include("./handlers/student.php");
+
+$all_students_array = get_all_students($conn);
 
 ?>
 <!DOCTYPE html>
@@ -90,119 +96,34 @@ include("logout.php");
                 <th style="border-radius: 0px 4px 0px 0px;">Action</th>
             </tr>
 
-            <tr>
-                <td>1</td>
-                <td>Abdallah Alli</td>
-                <td>Alli maulid</td>
-                <td>12/09/2020</td>
-                <td>male</td>
-                <td>3</td>
-                <td>0789674523</td>
-                <td><i class="fas fa-plus" style="margin-right: 6px; font-size: small;"></i> | <i class="fas fa-eye" style="margin-left: 6px; font-size: small;"></i></td>
-                <td><i class="fas fa-edit" style="margin-right: 6px; font-size: small;"></i> | <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;"></i></td>
-            </tr>
+            <?php for ($i = 0; $i < count($all_students_array); $i++) { ?>
+                <tr>
+                    <td><?= $all_students_array[$i]['student_id'] ?></td>
+                    <td><?= $all_students_array[$i]['student_name'] ?></td>
+                    <td><?= $all_students_array[$i]['parent_name'] ?></td>
+                    <td><?= $all_students_array[$i]['admission_date'] ?></td>
+                    <td><?= $all_students_array[$i]['sex'] ?></td>
+                    <td><?= $all_students_array[$i]['age'] ?></td>
+                    <td><?= $all_students_array[$i]['phone_no_one'] ?></td>
+                    <td><i class="fas fa-plus" id="add_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> | <i class="fas fa-eye" style="margin-left: 6px; font-size: small;cursor:pointer;"></i></td>
+                    <td><i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> | <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;"></i></td>
+                </tr>
+            <?php } ?>
+
         </table>
 
     </div>
 
     <div class="item-d"></div>
 
-    <div id="add_student_modal" class="modal">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <b>ADD NEW STUDENT</b>
-                <span><i class="fas fa-times" id="close_add_student_modal" style="cursor: pointer;"></i></span>
-            </div>
-
-            <hr class="modal-hr" align="left">
-
-            <div class="modal-body">
-
-                <label for="full_name">Student name</label>
-
-                <input type="text" name="full_name" id="full_name" class="inp-padding">
-
-                <label for="full_name">Parent/Guardian name</label>
-
-                <input type="text" name="parent_name" id="full_name" class="inp-padding">
-
-                <label for="reg_date">Admission Date</label>
-
-                <input type="date" name="reg_date" id="reg_date" class="inp-padding">
-
-                <label for="sex">Sex</label>
-
-                <input type="text" name="sex" id="sex" class="inp-padding">
-
-                <div class="row">
-                    <label for="dob" class="content">Date of birth</label>
-                    <label for="age" class="content">Age</label>
-                </div>
-
-                <div class="row">
-                    <input type="date" name="dob" id="dob" class="inp-padding content">
-                    <input type="text" name="age" id="age" class="inp-padding content">
-                </div>
-
-                <div class="row">
-                    <label for="phone1" class="content">Phone number 1</label>
-                    <label for="phone2" class="content">Phone number 2</label>
-                </div>
-
-                <div class="row">
-                    <input type="tel" name="phone1" id="phone1" class="inp-padding content" style="width: 100%;">
-                    <input type="tel" name="phone2" id="phone2" class="inp-padding content" style="width: 100%;">
-                </div>
-
-                <div class="row">
-                    <button class="add-btn modal-btn"><b>ADD STUDENT</b></button>
-                </div>
-
-                <!-- <div class="row">
-                    <label for="amount_payable" class="content">Amount payable</label>
-                    <label for="amount_remaining" class="content">Amount remaining</label>
-                </div>
-
-                <div class="row">
-                    <input type="text" name="amount_payable" id="amount_payable" class="inp-padding content">
-                    <input type="text" name="amount_remaining" id="amount_remaining" class="inp-padding content">
-                </div>
-
-                <div class="row">
-                    <label for="fee_year" class="content">Fee year</label>
-                    <label for="fee_month" class="content">Fee month</label>
-                </div>
-
-                <div class="row">
-                    <select name="fee_year" id="fee_year" style="width: 100%;">
-                        <option value="">Select year</option>
-                    </select>
-                    <select name="fee_month" id="fee_month" class="inp-padding content" style="width: 100%;">
-                        <option value="">Select month</option>
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                </div> -->
-            </div>
-
-        </div>
-
-    </div>
+    <?php
+    include("./includes/modals/add_student_modal.php");
+    include("./includes/modals/add_student_fee_modal.php");
+    ?>
 
 </body>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/main.js"></script>
 
 </html>
