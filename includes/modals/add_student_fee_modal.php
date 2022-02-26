@@ -9,7 +9,15 @@
 
         <hr class="modal-hr" align="left">
 
-        
+        <div class="modal-body">
+
+            <label for="fee_full_name">Student name</label>
+
+            <input type="text" name="fee_full_name" id="fee_full_name" class="inp-padding">
+
+        </div>
+
+
 
     </div>
 

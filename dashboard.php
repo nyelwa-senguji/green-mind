@@ -96,19 +96,38 @@ $all_students_array = get_all_students($conn);
                 <th style="border-radius: 0px 4px 0px 0px;">Action</th>
             </tr>
 
-            <?php for ($i = 0; $i < count($all_students_array); $i++) { ?>
-                <tr>
-                    <td><?= $all_students_array[$i]['student_id'] ?></td>
+            <?php
+
+            $count = 1;
+
+            for ($i = 0; $i < count($all_students_array); $i++) {
+
+            ?>
+                <tr id="results_table">
+                    <td><?= $count ?></td>
                     <td><?= $all_students_array[$i]['student_name'] ?></td>
                     <td><?= $all_students_array[$i]['parent_name'] ?></td>
                     <td><?= $all_students_array[$i]['admission_date'] ?></td>
                     <td><?= $all_students_array[$i]['sex'] ?></td>
                     <td><?= $all_students_array[$i]['age'] ?></td>
                     <td><?= $all_students_array[$i]['phone_no_one'] ?></td>
-                    <td><i class="fas fa-plus" id="add_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> | <i class="fas fa-eye" style="margin-left: 6px; font-size: small;cursor:pointer;"></i></td>
-                    <td><i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> | <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;"></i></td>
+                    <td>
+                        <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
+                            <i class="fas fa-plus" id="add_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
+                        </a> |
+                        <a href="javascript:;" class="view_fee" data-toggle="modal" data-target="#view_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
+                            <i class="fas fa-eye" id="view_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> |
+                        <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;"></i>
+                    </td>
                 </tr>
-            <?php } ?>
+            <?php
+                $count++;
+            }
+            ?>
 
         </table>
 
@@ -119,6 +138,7 @@ $all_students_array = get_all_students($conn);
     <?php
     include("./includes/modals/add_student_modal.php");
     include("./includes/modals/add_student_fee_modal.php");
+    include("./includes/modals/view_student_fee_modal.php");
     ?>
 
 </body>

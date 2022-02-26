@@ -40,7 +40,39 @@ window.onclick = function (event) {
         add_student_fee_modal.style.display = "none";
     }
 }
+
+$(document).on("click", ".add_fee", function (e) {
+    var name = $(this).data('name');
+    $('#fee_full_name').val(name);
+});
 /**********  END ADD STUDENT FEE JS **********/
+
+/**********  VIEW STUDENT FEE JS **********/
+var view_student_fee_modal = document.getElementById("view_student_fee_modal");
+
+var view_student_fee_btn = document.getElementById("view_student_fee_btn");
+
+var close_view_student_fee_modal = document.getElementById("close_view_student_fee_modal")
+
+view_student_fee_btn.onclick = function () {
+    view_student_fee_modal.style.display = "block";
+}
+
+close_view_student_fee_modal.onclick = function () {
+    view_student_fee_modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == view_student_fee_modal) {
+        view_student_fee_modal.style.display = "none";
+    }
+}
+
+$(document).on("click", ".view_fee", function () {
+    var name = $(this).data('name');
+    $('#name_view').val(name);
+});
+/**********  END VIEW STUDENT FEE JS **********/
 
 /**********  YEAR JS **********/
 var dateDropdown = document.getElementById('year');
@@ -102,8 +134,8 @@ function addStudent() {
                 phone2: phone2
             },
             success: function (response) {
-                // jsonData = JSON.parse(response);
                 alert(response);
+                document.location.reload();
             }
         });
 
