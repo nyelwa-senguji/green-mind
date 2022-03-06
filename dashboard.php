@@ -96,38 +96,41 @@ $all_students_array = get_all_students($conn);
                 <th style="border-radius: 0px 4px 0px 0px;">Action</th>
             </tr>
 
-            <?php
+            <tbody>
 
-            $count = 1;
+                <?php
 
-            for ($i = 0; $i < count($all_students_array); $i++) {
+                $count = 1;
 
-            ?>
-                <tr id="results_table">
-                    <td><?= $count ?></td>
-                    <td><?= $all_students_array[$i]['student_name'] ?></td>
-                    <td><?= $all_students_array[$i]['parent_name'] ?></td>
-                    <td><?= $all_students_array[$i]['admission_date'] ?></td>
-                    <td><?= $all_students_array[$i]['sex'] ?></td>
-                    <td><?= $all_students_array[$i]['age'] ?></td>
-                    <td><?= $all_students_array[$i]['phone_no_one'] ?></td>
-                    <td>
-                        <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
-                            <i class="fas fa-plus" id="add_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
-                        </a> |
-                        <a href="javascript:;" class="view_fee" data-toggle="modal" data-target="#view_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
-                            <i class="fas fa-eye" id="view_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> |
-                        <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;"></i>
-                    </td>
-                </tr>
-            <?php
-                $count++;
-            }
-            ?>
+                for ($i = 0; $i < count($all_students_array); $i++) {
+
+                ?>
+                    <tr>
+                        <td><?= $count ?></td>
+                        <td><?= $all_students_array[$i]['student_name'] ?></td>
+                        <td><?= $all_students_array[$i]['parent_name'] ?></td>
+                        <td><?= $all_students_array[$i]['admission_date'] ?></td>
+                        <td><?= $all_students_array[$i]['sex'] ?></td>
+                        <td><?= $all_students_array[$i]['age'] ?></td>
+                        <td><?= $all_students_array[$i]['phone_no_one'] ?></td>
+                        <td>
+                            <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
+                                <i class="fas fa-plus" id="add_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
+                            </a> |
+                            <a href="javascript:;" class="view_fee" data-toggle="modal" data-target="#view_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
+                                <i class="fas fa-eye" id="view_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> |
+                            <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;"></i>
+                        </td>
+                    </tr>
+                <?php
+                    $count++;
+                }
+                ?>
+            </tbody>
 
         </table>
 
@@ -143,7 +146,7 @@ $all_students_array = get_all_students($conn);
 
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="js/main.js"></script>
 
 </html>

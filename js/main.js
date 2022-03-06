@@ -42,8 +42,10 @@ window.onclick = function (event) {
 }
 
 $(document).on("click", ".add_fee", function (e) {
+    e.preventDefault();
     var name = $(this).data('name');
     $('#fee_full_name').val(name);
+    console.log("clicked");
 });
 /**********  END ADD STUDENT FEE JS **********/
 
