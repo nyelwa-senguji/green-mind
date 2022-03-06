@@ -1,3 +1,19 @@
+$(document).ready(function () {
+
+    $("#add_student").click(function (e) {
+        e.preventDefault();
+        addStudent();
+    });
+
+    $('#result_table').on("click", ".add_fee", function (e) {
+        e.preventDefault();
+        var name = $(this).data('name');
+        $('#fee_full_name_' + user_id).val(name);
+        console.log(name);
+    });
+
+});
+
 /**********  ADD STUDENT JS **********/
 var add_student_modal = document.getElementById("add_student_modal");
 
@@ -21,32 +37,22 @@ window.onclick = function (event) {
 /**********  END ADD STUDENT JS **********/
 
 /**********  ADD STUDENT FEE JS **********/
-var add_student_fee_modal = document.getElementById("add_student_fee_modal");
+var add_student_fee_modal;
 
 var add_student_fee_btn = document.getElementById("add_student_fee_btn");
 
-var close_add_student_fee_modal = document.getElementById("close_add_student_fee_modal")
+var user_id;
 
-add_student_fee_btn.onclick = function () {
+function selectedModal(id){
+    add_student_fee_modal = document.getElementById("add_student_fee_modal_" + id);
     add_student_fee_modal.style.display = "block";
+    user_id = id;
 }
 
-close_add_student_fee_modal.onclick = function () {
+function closeModal(id){
+    add_student_fee_modal = document.getElementById("add_student_fee_modal_" + id);
     add_student_fee_modal.style.display = "none";
 }
-
-window.onclick = function (event) {
-    if (event.target == add_student_fee_modal) {
-        add_student_fee_modal.style.display = "none";
-    }
-}
-
-$(document).on("click", ".add_fee", function (e) {
-    e.preventDefault();
-    var name = $(this).data('name');
-    $('#fee_full_name').val(name);
-    console.log("clicked");
-});
 /**********  END ADD STUDENT FEE JS **********/
 
 /**********  VIEW STUDENT FEE JS **********/
@@ -91,15 +97,6 @@ while (currentYear >= earliestYear) {
 /**********  END YEAR JS **********/
 
 /**********  ADD NEW STUDENT JS **********/
-$(document).ready(function () {
-
-    $("#add_student").click(function (e) {
-        e.preventDefault();
-        addStudent();
-    });
-
-});
-
 function addStudent() {
 
     var full_name = $("#full_name").val();

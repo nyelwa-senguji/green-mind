@@ -83,7 +83,7 @@ $all_students_array = get_all_students($conn);
             </div>
         </div>
 
-        <table>
+        <table id="result_table">
             <tr style="color: #fff; background-color: #39ac39;">
                 <th style="border-radius: 4px 0px 0px 0px;">S/No</th>
                 <th>Student Name</th>
@@ -114,7 +114,7 @@ $all_students_array = get_all_students($conn);
                         <td><?= $all_students_array[$i]['age'] ?></td>
                         <td><?= $all_students_array[$i]['phone_no_one'] ?></td>
                         <td>
-                            <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
+                            <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal_<?= $all_students_array[$i]['student_id']?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
                                 <i class="fas fa-plus" id="add_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
                             </a> |
                             <a href="javascript:;" class="view_fee" data-toggle="modal" data-target="#view_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
