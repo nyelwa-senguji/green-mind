@@ -25,7 +25,11 @@
 
                 <label for="sex">Sex</label>
 
-                <input type="text" name="sex" id="sex" class="inp-padding">
+                <select name="sex" id="sex" class="inp-padding">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
 
                 <div class="row">
                     <label for="dob" class="content">Date of birth</label>

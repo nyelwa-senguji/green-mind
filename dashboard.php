@@ -106,19 +106,19 @@ $all_students_array = get_all_students($conn);
 
                 ?>
                     <tr>
-                        <td><?= $count ?></td>
+                        <td style="text-align: center;"><?= $count ?></td>
                         <td><?= $all_students_array[$i]['student_name'] ?></td>
                         <td><?= $all_students_array[$i]['parent_name'] ?></td>
-                        <td><?= $all_students_array[$i]['admission_date'] ?></td>
+                        <td style="text-align: center;"><?= $all_students_array[$i]['admission_date'] ?></td>
                         <td><?= $all_students_array[$i]['sex'] ?></td>
-                        <td><?= $all_students_array[$i]['age'] ?></td>
-                        <td><?= $all_students_array[$i]['phone_no_one'] ?></td>
+                        <td style="text-align: center;"><?= $all_students_array[$i]['age'] ?></td>
+                        <td style="text-align: center;"><?= $all_students_array[$i]['phone_no_one'] ?></td>
                         <td>
-                            <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal_<?= $all_students_array[$i]['student_id']?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
-                                <i class="fas fa-plus" id="add_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
+                            <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal_<?= $all_students_array[$i]['student_id'] ?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
+                                <i class="fas fa-plus" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
                             </a> |
-                            <a href="javascript:;" class="view_fee" data-toggle="modal" data-target="#view_student_fee_modal" data-name="<?= $all_students_array[$i]['student_name'] ?>" style="text-decoration: none;">
-                                <i class="fas fa-eye" id="view_student_fee_btn" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
+                            <a href="javascript:;" class="view_fee" data-toggle="modal" data-target="#view_student_fee_modal_<?= $all_students_array[$i]['student_id'] ?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
+                                <i class="fas fa-eye" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
                             </a>
                         </td>
                         <td>

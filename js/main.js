@@ -9,17 +9,25 @@ $(document).ready(function () {
         e.preventDefault();
         var name = $(this).data('name');
         $('#fee_full_name_' + user_id).val(name);
+    });
+
+    $('#result_table').on("click", ".view_fee", function (e) {
+        e.preventDefault();
+        var name = $(this).data('name');
+        $('#view_fee_full_name_' + user_id).val(name);
         console.log(name);
     });
 
 });
+
+var user_id;
 
 /**********  ADD STUDENT JS **********/
 var add_student_modal = document.getElementById("add_student_modal");
 
 var add_student_btn = document.getElementById("add_student_btn");
 
-var close_add_student_modal = document.getElementById("close_add_student_modal")
+var close_add_student_modal = document.getElementById("close_add_student_modal");
 
 add_student_btn.onclick = function () {
     add_student_modal.style.display = "block";
@@ -36,51 +44,47 @@ window.onclick = function (event) {
 }
 /**********  END ADD STUDENT JS **********/
 
-/**********  ADD STUDENT FEE JS **********/
+/**********  ACTION MODALS **********/
 var add_student_fee_modal;
 
-var add_student_fee_btn = document.getElementById("add_student_fee_btn");
-
-var user_id;
+var view_student_fee_modal;
 
 function selectedModal(id){
+
+    /**********  OPEN ADD STUDENT FEE MODAL **********/
     add_student_fee_modal = document.getElementById("add_student_fee_modal_" + id);
     add_student_fee_modal.style.display = "block";
+    /**********  END OPEN ADD STUDENT FEE MODAL **********/
+
+    /**********  OPEN VIEW STUDENT FEE MODAL **********/
+    view_student_fee_modal = document.getElementById("view_student_fee_modal_" + id);
+    view_student_fee_modal.style.display = "block";
+    /**********  END OPEN VIEW ADD STUDENT FEE MODAL **********/
     user_id = id;
 }
 
 function closeModal(id){
+
+    /**********  CLOSE STUDENT FEE MODAL **********/
     add_student_fee_modal = document.getElementById("add_student_fee_modal_" + id);
     add_student_fee_modal.style.display = "none";
-}
-/**********  END ADD STUDENT FEE JS **********/
+    /**********  CLOSE STUDENT FEE MODAL **********/
 
-/**********  VIEW STUDENT FEE JS **********/
-var view_student_fee_modal = document.getElementById("view_student_fee_modal");
-
-var view_student_fee_btn = document.getElementById("view_student_fee_btn");
-
-var close_view_student_fee_modal = document.getElementById("close_view_student_fee_modal")
-
-view_student_fee_btn.onclick = function () {
-    view_student_fee_modal.style.display = "block";
-}
-
-close_view_student_fee_modal.onclick = function () {
+    /**********  CLOSE STUDENT FEE MODAL **********/
+    view_student_fee_modal = document.getElementById("view_student_fee_modal_" + id);
     view_student_fee_modal.style.display = "none";
+    /**********  CLOSE STUDENT FEE MODAL **********/
 }
 
 window.onclick = function (event) {
     if (event.target == view_student_fee_modal) {
         view_student_fee_modal.style.display = "none";
     }
+    if (event.target == add_student_fee_modal) {
+        add_student_fee_modal.style.display = "none";
+    }
 }
-
-$(document).on("click", ".view_fee", function () {
-    var name = $(this).data('name');
-    $('#name_view').val(name);
-});
-/**********  END VIEW STUDENT FEE JS **********/
+/**********  END ACTION MODALS **********/
 
 /**********  YEAR JS **********/
 var dateDropdown = document.getElementById('year');
@@ -116,8 +120,6 @@ function addStudent() {
     var phone2 = $("#phone2").val();
 
     if (full_name != "" || parent_name != "" || adm_date != "" || sex != "" || dob != "" || age != "" || phone1 != "" || phone2 != "") {
-
-        // confirm("Are you sure you want this information");
 
         $.ajax({
             type: "POST",
