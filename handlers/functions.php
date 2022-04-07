@@ -40,3 +40,30 @@ function get_all_students($conn)
 
     return $data;
 }
+
+function get_all_fees($conn)
+{
+    $data = array();
+
+    $d = array();
+
+    $select_all_categories = "SELECT category_id, category_name FROM tbl_category";
+
+    $stmt = mysqli_prepare($conn, $select_all_categories);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_bind_result($stmt, $category_id, $category_name);
+
+    while (mysqli_stmt_fetch($stmt)){
+
+        $d['category_id'] = $category_id;
+
+        $d['category_name'] = $category_name;
+
+        array_push($data, $d);
+
+    }
+
+    return $data;
+}

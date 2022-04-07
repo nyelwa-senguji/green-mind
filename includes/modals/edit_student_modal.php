@@ -1,9 +1,9 @@
-<div id="view_student_fee_modal_<?= $all_students_array[$i]['student_id'] ?>" class="modal">
+<div id="edit_student_modal_<?= $all_students_array[$i]['student_id'] ?>" class="modal">
 
     <div class="modal-content">
 
         <div class="modal-header">
-            <b>VIEW STUDENT FEE</b>
+            <b>EDIT STUDENT INFORMATION</b>
             <span><i class="fas fa-times" onclick="closeModal(<?= $all_students_array[$i]['student_id'] ?>);" style="cursor: pointer;"></i></span>
         </div>
 
@@ -11,9 +11,9 @@
 
         <div class="modal-body">
 
-            <label for="view_fee_full_name">Student name</label>
+            <label for="edit_full_name">Student name</label>
 
-            <input type="text" name="view_fee_full_name" id="view_fee_full_name_<?= $all_students_array[$i]['student_id'] ?>" class="inp-padding">
+            <input type="text" name="edit_full_name" id="edit_full_name_<?= $all_students_array[$i]['student_id'] ?>" class="inp-padding">
 
         </div>
 

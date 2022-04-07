@@ -6,9 +6,11 @@ include("./includes/check_session.php");
 
 include("logout.php");
 
-include("./handlers/student.php");
+include("./handlers/functions.php");
 
 $all_students_array = get_all_students($conn);
+
+$all_category_array = get_all_fees($conn);
 
 ?>
 <!DOCTYPE html>
@@ -23,9 +25,6 @@ $all_students_array = get_all_students($conn);
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="fonts/css/all.css">
 
-    <!--- Phone number for country ---->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 </head>
 
 <body class="container">
@@ -47,6 +46,8 @@ $all_students_array = get_all_students($conn);
             </div>
 
             <div class="header">
+                <button class="add-btn" id="add_category_btn"><i class="fas fa-plus" style="margin-right: 6px;"></i> Add Category</button>
+                <button class="add-btn" id="add_fee_btn"><i class="fas fa-plus" style="margin-right: 6px;"></i> Add Fee Structure</button>
                 <button class="add-btn" id="add_student_btn"><i class="fas fa-plus" style="margin-right: 6px;"></i> Add New Student</button>
             </div>
         </div>
@@ -122,7 +123,9 @@ $all_students_array = get_all_students($conn);
                             </a>
                         </td>
                         <td>
-                            <i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer;"></i> |
+                            <a href="javascript:;" class="edit_student" data-toggle="modal" data-target="#edit_student_modal_<?= $all_students_array[$i]['student_id'] ?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
+                                <i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
+                            </a> |
                             <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;"></i>
                         </td>
                     </tr>
@@ -140,13 +143,21 @@ $all_students_array = get_all_students($conn);
 
     <?php
     include("./includes/modals/add_student_modal.php");
-    include("./includes/modals/add_student_fee_modal.php");
-    include("./includes/modals/view_student_fee_modal.php");
+    include("./includes/modals/add_fee_modal.php");
+    include("./includes/modals/add_category_modal.php");
+    for ($i = 0; $i < count($all_students_array); $i++) {
+        include("./includes/modals/view_student_fee_modal.php");
+        include("./includes/modals/edit_student_modal.php");
+        include("./includes/modals/add_student_fee_modal.php");
+    }
     ?>
 
 </body>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/student.js"></script>
+<script src="js/fee.js"></script>
+<script src="js/category.js"></script>
 
 </html>

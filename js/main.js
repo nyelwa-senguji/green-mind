@@ -1,53 +1,11 @@
-$(document).ready(function () {
-
-    $("#add_student").click(function (e) {
-        e.preventDefault();
-        addStudent();
-    });
-
-    $('#result_table').on("click", ".add_fee", function (e) {
-        e.preventDefault();
-        var name = $(this).data('name');
-        $('#fee_full_name_' + user_id).val(name);
-    });
-
-    $('#result_table').on("click", ".view_fee", function (e) {
-        e.preventDefault();
-        var name = $(this).data('name');
-        $('#view_fee_full_name_' + user_id).val(name);
-        console.log(name);
-    });
-
-});
-
 var user_id;
-
-/**********  ADD STUDENT JS **********/
-var add_student_modal = document.getElementById("add_student_modal");
-
-var add_student_btn = document.getElementById("add_student_btn");
-
-var close_add_student_modal = document.getElementById("close_add_student_modal");
-
-add_student_btn.onclick = function () {
-    add_student_modal.style.display = "block";
-}
-
-close_add_student_modal.onclick = function () {
-    add_student_modal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == add_student_modal) {
-        add_student_modal.style.display = "none";
-    }
-}
-/**********  END ADD STUDENT JS **********/
 
 /**********  ACTION MODALS **********/
 var add_student_fee_modal;
 
 var view_student_fee_modal;
+
+var edit_student_modal;
 
 function selectedModal(id){
 
@@ -60,6 +18,12 @@ function selectedModal(id){
     view_student_fee_modal = document.getElementById("view_student_fee_modal_" + id);
     view_student_fee_modal.style.display = "block";
     /**********  END OPEN VIEW ADD STUDENT FEE MODAL **********/
+
+    /**********  OPEN EDIT STUDENT MODAL **********/
+    edit_student_modal = document.getElementById("edit_student_modal_" + id);
+    edit_student_modal.style.display = "block";
+    /**********  END OPEN EDIT STUDENT MODAL **********/
+
     user_id = id;
 }
 
@@ -68,22 +32,19 @@ function closeModal(id){
     /**********  CLOSE STUDENT FEE MODAL **********/
     add_student_fee_modal = document.getElementById("add_student_fee_modal_" + id);
     add_student_fee_modal.style.display = "none";
-    /**********  CLOSE STUDENT FEE MODAL **********/
+    /**********  END CLOSE STUDENT FEE MODAL **********/
 
     /**********  CLOSE STUDENT FEE MODAL **********/
     view_student_fee_modal = document.getElementById("view_student_fee_modal_" + id);
     view_student_fee_modal.style.display = "none";
-    /**********  CLOSE STUDENT FEE MODAL **********/
+    /**********  END CLOSE STUDENT FEE MODAL **********/
+
+    /**********  CLOSE EDIT STUDENT MODAL **********/
+    edit_student_modal = document.getElementById("edit_student_modal_" + id);
+    edit_student_modal.style.display = "none";
+    /**********  END CLOSE EDIT STUDENT MODAL **********/
 }
 
-window.onclick = function (event) {
-    if (event.target == view_student_fee_modal) {
-        view_student_fee_modal.style.display = "none";
-    }
-    if (event.target == add_student_fee_modal) {
-        add_student_fee_modal.style.display = "none";
-    }
-}
 /**********  END ACTION MODALS **********/
 
 /**********  YEAR JS **********/
@@ -100,63 +61,39 @@ while (currentYear >= earliestYear) {
 }
 /**********  END YEAR JS **********/
 
-/**********  ADD NEW STUDENT JS **********/
-function addStudent() {
+$(document).ready(function () {
 
-    var full_name = $("#full_name").val();
+    $("#add_student").click(function (e) {
+        e.preventDefault();
+        addStudent();
+    });
 
-    var parent_name = $("#parent_name").val();
+    $("#add_fee_structure").click(function (e) {
+        e.preventDefault();
+        addFee();
+    });
 
-    var adm_date = $("#adm_date").val();
+    $("#add_category").click(function (e) {
+        e.preventDefault();
+        addCategory();
+    });
 
-    var sex = $("#sex").val();
+    $('#result_table').on("click", ".add_fee", function (e) {
+        e.preventDefault();
+        var name = $(this).data('name');
+        $('#fee_full_name_' + user_id).val(name);
+    });
 
-    var dob = $("#dob").val();
+    $('#result_table').on("click", ".view_fee", function (e) {
+        e.preventDefault();
+        var name = $(this).data('name');
+        $('#view_fee_full_name_' + user_id).val(name);
+    });
 
-    var age = $("#age").val();
+    $('#result_table').on("click", ".edit_student", function (e) {
+        e.preventDefault();
+        var name = $(this).data('name');
+        $('#edit_full_name_' + user_id).val(name);
+    });
 
-    var phone1 = $("#phone1").val();
-
-    var phone2 = $("#phone2").val();
-
-    if (full_name != "" || parent_name != "" || adm_date != "" || sex != "" || dob != "" || age != "" || phone1 != "" || phone2 != "") {
-
-        $.ajax({
-            type: "POST",
-            url: "repo/add_student.php",
-            data: {
-                full_name: full_name,
-                parent_name: parent_name,
-                adm_date: adm_date,
-                sex: sex,
-                dob: dob,
-                age: age,
-                phone1: phone1,
-                phone2: phone2
-            },
-            success: function (response) {
-                alert(response);
-                document.location.reload();
-            }
-        });
-
-    } else {
-        alert("Please fill in all required fields");
-    }
-
-}
-/**********  ADD NEW STUDENT JS **********/
-
-/********** CALCULATE AGE JS **********/
-function getAge(dateString) {
-    var today = new Date();
-    var birthDate = new Date(dateString);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    // return age;
-    document.getElementById("age").value = age;
-}
-/********** END CALCULATE AGE JS **********/
+});

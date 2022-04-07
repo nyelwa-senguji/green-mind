@@ -2,8 +2,6 @@
 
 include("../includes/connection.php");
 
-session_start();
-
 $full_name = mysqli_real_escape_string($conn, trim($_POST['full_name']));
 
 $parent_name = mysqli_real_escape_string($conn, trim($_POST['parent_name']));
