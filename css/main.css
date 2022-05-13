@@ -86,6 +86,10 @@
     color: #fff;
 }
 
+.cursor{
+    cursor: pointer;
+}
+
 .inp-padding {
     padding: 6px;
     border: none;

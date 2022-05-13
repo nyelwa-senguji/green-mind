@@ -60,6 +60,9 @@ $all_category_array = get_all_fees($conn);
             </div>
 
             <div class="filters">
+                <select name="year" id="year">
+                    <option value="">Select year</option>
+                </select>
                 <select name="month" id="month">
                     <option value="">Select month</option>
                     <option value="1">January</option>
@@ -74,9 +77,6 @@ $all_category_array = get_all_fees($conn);
                     <option value="10">October</option>
                     <option value="11">November</option>
                     <option value="12">December</option>
-                </select>
-                <select name="year" id="year">
-                    <option value="">Select year</option>
                 </select>
                 <select name="status" id="status">
                     <option value="">Status</option>
@@ -93,7 +93,7 @@ $all_category_array = get_all_fees($conn);
                 <th>Sex</th>
                 <th>Age</th>
                 <th>Phone number</th>
-                <th>Fees</th>
+                <th>Category</th>
                 <th style="border-radius: 0px 4px 0px 0px;">Action</th>
             </tr>
 
@@ -108,25 +108,18 @@ $all_category_array = get_all_fees($conn);
                 ?>
                     <tr>
                         <td style="text-align: center;"><?= $count ?></td>
-                        <td><?= $all_students_array[$i]['student_name'] ?></td>
-                        <td><?= $all_students_array[$i]['parent_name'] ?></td>
+                        <td class="cursor" onclick="studentDetails(<?= $all_students_array[$i]['student_id'] ?>);"><?= $all_students_array[$i]['student_name'] ?></td>
+                        <td class="cursor" onclick="studentDetails(<?= $all_students_array[$i]['student_id'] ?>);"><?= $all_students_array[$i]['parent_name'] ?></td>
                         <td style="text-align: center;"><?= $all_students_array[$i]['admission_date'] ?></td>
                         <td><?= $all_students_array[$i]['sex'] ?></td>
                         <td style="text-align: center;"><?= $all_students_array[$i]['age'] ?></td>
                         <td style="text-align: center;"><?= $all_students_array[$i]['phone_no_one'] ?></td>
-                        <td>
-                            <a href="javascript:;" class="add_fee" data-toggle="modal" data-target="#add_student_fee_modal_<?= $all_students_array[$i]['student_id'] ?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
-                                <i class="fas fa-plus" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
-                            </a> |
-                            <a href="javascript:;" class="view_fee" data-toggle="modal" data-target="#view_student_fee_modal_<?= $all_students_array[$i]['student_id'] ?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
-                                <i class="fas fa-eye" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
-                            </a>
-                        </td>
+                        <td><?= $all_students_array[$i]['category'] ?></td>
                         <td>
                             <a href="javascript:;" class="edit_student" data-toggle="modal" data-target="#edit_student_modal_<?= $all_students_array[$i]['student_id'] ?>" data-name="<?= $all_students_array[$i]['student_name'] ?>" onclick="selectedModal(<?= $all_students_array[$i]['student_id'] ?>);" style="text-decoration: none;">
                                 <i class="fas fa-edit" style="margin-right: 6px; font-size: small;cursor:pointer; color:#303036;"></i>
                             </a> |
-                            <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;"></i>
+                            <i class="fas fa-trash-alt" style="margin-left: 6px; font-size: small;cursor:pointer;" onclick="deleteRow(this, <?= $all_students_array[$i]['student_id'] ?>);"></i>
                         </td>
                     </tr>
                 <?php

@@ -29,6 +29,8 @@ function addStudent() {
 
     var adm_date = $("#adm_date").val();
 
+    var student_category = $("#student_category").val();
+
     var sex = $("#sex").val();
 
     var dob = $("#dob").val();
@@ -39,6 +41,8 @@ function addStudent() {
 
     var phone2 = $("#phone2").val();
 
+    alert(student_category);
+
     if (full_name != "" || parent_name != "" || adm_date != "" || sex != "" || dob != "" || age != "" || phone1 != "" || phone2 != "") {
 
         $.ajax({
@@ -48,6 +52,7 @@ function addStudent() {
                 full_name: full_name,
                 parent_name: parent_name,
                 adm_date: adm_date,
+                student_category: student_category,
                 sex: sex,
                 dob: dob,
                 age: age,
@@ -66,6 +71,12 @@ function addStudent() {
 
 }
 /**********  ADD NEW STUDENT JS **********/
+
+/**********   STUDENT DETAILS JS **********/
+function studentDetails(id){
+    alert(id);
+}
+/**********   END STUDENT DETAILS JS **********/
 
 /********** CALCULATE AGE JS **********/
 function getAge(dateString) {

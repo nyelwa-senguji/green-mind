@@ -6,13 +6,13 @@ function get_all_students($conn)
 
     $d = array();
 
-    $select_all_students = "SELECT * FROM tbl_student";
+    $select_all_students = "SELECT * FROM tbl_student WHERE is_Deleted = 'No'";
 
     $stmt = mysqli_prepare($conn, $select_all_students);
 
     mysqli_stmt_execute($stmt);
 
-    mysqli_stmt_bind_result($stmt, $student_id, $student_name, $parent_name, $admission_date, $sex, $date_of_birth, $age, $phone_no_one, $phone_no_two);
+    mysqli_stmt_bind_result($stmt, $student_id, $student_name, $parent_name, $admission_date, $category, $sex, $date_of_birth, $age, $phone_no_one, $phone_no_two, $is_Deleted);
 
     while (mysqli_stmt_fetch($stmt)){
 
@@ -24,6 +24,8 @@ function get_all_students($conn)
 
         $d['admission_date'] = $admission_date;
 
+        $d['category'] = $category;
+
         $d['sex'] = $sex;
 
         $d['date_of_birth'] = $date_of_birth;
@@ -33,6 +35,8 @@ function get_all_students($conn)
         $d['phone_no_one'] = $phone_no_one;
 
         $d['phone_no_two'] = $phone_no_two;
+
+        $d['is_Deleted'] = $is_Deleted;
 
         array_push($data, $d);
 
